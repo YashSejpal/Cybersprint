@@ -33,7 +33,7 @@ app.py contains information to build an API using the model above to build web a
 
 ## Hugging Face
 
-Hugging Face contains a visualiazation of the data and predictions
+Hugging Face contains a visualiazation of the data and predictions. [Here is a link to the Hugging Face space](https://huggingface.co/spaces/Amaysood/P2P_Lending_Deliquency)
 
 ## Usage
 
