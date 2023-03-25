@@ -1,4 +1,5 @@
 #import necessary libraries and utilities
+import pickle
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
@@ -13,7 +14,8 @@ from sklearn.metrics import r2_score,mean_absolute_error,mean_squared_error
 #def read_data(url = 'https://github.com/amaysood/Cybersprint/raw/main/loans_clean_schema.csv'):
     #data=pd.read_csv(url)
     #return data
-#Fucntion that fethecs Dataframe from required csv
+
+#Fucntion that fetches Dataframe from required csv
 def read_data():
     data=pd.read_csv('loans_clean_schema.csv')
     return data
@@ -91,12 +93,16 @@ def train(data):
     #Train Ridge model with best value of alpha
     best_ridge = grid_search.best_estimator_
     best_ridge.fit(X_train_poly, y_train)
+    # save the trained model as a pickle file
+    with open('model.pickle', 'wb') as f:
+        pickle.dump(best_ridge, f)
     return X_test_poly,best_ridge,y_test
 
 
 #carrying out predictions
 def predict(X_test_poly,model,y_test):
     y_pred=model.predict(X_test_poly)
+    y_pred=y_pred.clip(None,100)
     print(y_pred)
     #scoring metrics
     #print( r2_score(y_test, y_pred))
