@@ -103,16 +103,16 @@ def train(data):
 def predict(X_test_poly,model,y_test):
     y_pred=model.predict(X_test_poly)
     y_pred=y_pred.clip(None,100)
-    print(y_pred)
     #scoring metrics
-    #print( r2_score(y_test, y_pred))
-    #print( mean_absolute_error(y_test, y_pred))
-    #print( mean_squared_error(y_test, y_pred))
+    R2_score=( r2_score(y_test, y_pred))
+    mae_score=( mean_absolute_error(y_test, y_pred))
+    mse_score=( mean_squared_error(y_test, y_pred))
+    return y_pred,R2_score,mae_score,mse_score
 
 if __name__ == '__main__':
     data=read_data()
     X_test_poly,model,y_test=train(data)
-    predict(X_test_poly,model,y_test)
+    y_pred=predict(X_test_poly,model,y_test)
     
 
 

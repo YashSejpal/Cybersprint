@@ -36,4 +36,4 @@ def predict_delinq(data:input):
     pred=regressor.predict([[emp_title,emp_length,homeownership,annual_income,debt_to_income,delinq_2y,earliest_credit_line,total_credit_lines,open_credit_lines,total_debit_limit,loan_purpose,loan_amount,balance]])
     return{'Delinq %':pred}
 if __name__=='__main__':
-    uvicorn.run(app,host='127.0.0.1',port=8000)
+    uvicorn.run(app,host='127.0.0.2',port=8000)
